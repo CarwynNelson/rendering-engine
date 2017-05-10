@@ -122,6 +122,8 @@
   <ItemGroup>
     <ClInclude Include="RenderEngine\Public\Exceptions\WindowNotLoadedException.h" />
     <ClInclude Include="RenderEngine\Public\Display.h" />
+    <ClInclude Include="RenderEngine\Public\Loader.h" />
+    <ClInclude Include="RenderEngine\Public\Model.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

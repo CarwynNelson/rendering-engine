@@ -26,5 +26,11 @@
     <ClInclude Include="RenderEngine\Public\Exceptions\WindowNotLoadedException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RenderEngine\Public\Model.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderEngine\Public\Loader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

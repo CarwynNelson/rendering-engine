@@ -3,51 +3,15 @@
 
 // Game Libs
 #include "RenderEngine/Public/Display.h"
-
-struct Model
-{
-	Model(GLuint vbo)
-	{
-		this->vbo = vbo;
-	}
-
-	GLuint getVbo()
-	{
-		return vbo;
-	}
-private:
-	GLuint vbo;
-};
-
-struct Loader
-{
-	Model loadData()
-	{
-		// An array of 3 vectors which represents 3 vertices
-		const GLfloat vertices[] = {
-			-1.0f, -1.0f, 0.0f,
-			1.0f, -1.0f, 0.0f,
-			0.0f,  1.0f, 0.0f,
-		};
-
-		GLuint vaoId;
-		glGenVertexArrays(1, &vaoId);
-		glBindVertexArray(vaoId);
-
-		GLuint vbo;
-		glGenBuffers(1, &vbo);
-		glBindBuffer(GL_ARRAY_BUFFER, vbo);
-
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-		return Model(vbo);
-	}
-};
+#include "RenderEngine/Public/Model.h"
+#include "RenderEngine/Public/Loader.h"
 
 int main()
 {
 	try
 	{
+		
+
 		auto exitCallback = [](GLFWwindow* window, int key, int scancode, int action, int mode) {
 			if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE)
 				glfwSetWindowShouldClose(window, GL_TRUE);
