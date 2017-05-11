@@ -4,15 +4,22 @@
 
 struct Model
 {
-	Model(GLuint vbo)
+	Model(GLuint vaoId, int vertexCount)
 	{
-		this->vbo = vbo;
+		this->vaoId = vaoId;
+		this->vertexCount = vertexCount;
 	}
 
-	GLuint getVbo()
+	GLuint getVaoId()
 	{
-		return vbo;
+		return vaoId;
+	}
+
+	int getVertexCount()
+	{
+		return vertexCount;
 	}
 private:
-	GLuint vbo;
+	GLuint vaoId;
+	int vertexCount;
 };

@@ -41,20 +41,13 @@ int main()
 			glClearColor(0.1f, 0.2f, 0.3f, 1.0);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+			glBindVertexArray(model.getVaoId());
 			glEnableVertexAttribArray(0);
-			glBindBuffer(GL_ARRAY_BUFFER, model.getVbo());
-			glVertexAttribPointer(
-				0, // attribute 0
-				3, // 3 vertices
-				GL_FLOAT,
-				GL_FALSE,
-				0,
-				(GLvoid*)0
-			);
-			
-			glDrawArrays(GL_TRIANGLES, 0, vertices.size());
-			
+
+			glDrawArrays(GL_TRIANGLES, 0, model.getVertexCount());
+
 			glDisableVertexAttribArray(0);
+			glBindVertexArray(0);
 
 			display.update();
 		}
