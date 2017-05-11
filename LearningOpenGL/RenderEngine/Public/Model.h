@@ -2,12 +2,12 @@
 
 #include <GL\glew.h>
 
-struct Model
+class Model
 {
+public:
 	Model(GLuint vaoId, int vertexCount)
+		: vaoId(vaoId), vertexCount(vertexCount)
 	{
-		this->vaoId = vaoId;
-		this->vertexCount = vertexCount;
 	}
 
 	GLuint getVaoId()
