@@ -1,8 +1,4 @@
-﻿  Loader.cpp
-  Generating Code...
-  Compiling...
-  Main.cpp
-  Generating Code...
+﻿  Display.cpp
 Loader.obj : warning LNK4049: locally defined symbol ___glewBindBuffer imported
 Loader.obj : warning LNK4049: locally defined symbol ___glewBufferData imported
 Loader.obj : warning LNK4049: locally defined symbol ___glewDeleteBuffers imported
