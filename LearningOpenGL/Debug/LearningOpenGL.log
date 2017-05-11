@@ -1,3 +1,16 @@
-﻿  Main.cpp
+﻿  Loader.cpp
+  Generating Code...
+  Compiling...
+  Main.cpp
+  Generating Code...
+Loader.obj : warning LNK4049: locally defined symbol ___glewBindBuffer imported
+Loader.obj : warning LNK4049: locally defined symbol ___glewBufferData imported
+Loader.obj : warning LNK4049: locally defined symbol ___glewDeleteBuffers imported
+Loader.obj : warning LNK4049: locally defined symbol ___glewGenBuffers imported
+Loader.obj : warning LNK4049: locally defined symbol ___glewVertexAttribPointer imported
+Loader.obj : warning LNK4049: locally defined symbol ___glewBindVertexArray imported
+Loader.obj : warning LNK4049: locally defined symbol ___glewDeleteVertexArrays imported
+Loader.obj : warning LNK4049: locally defined symbol ___glewGenVertexArrays imported
+glew32sd.lib(glew.obj) : warning LNK4099: PDB 'glew_static.pdb' was not found with 'glew32sd.lib(glew.obj)' or at 'C:\Users\Carwyn\documents\visual studio 2017\Projects\LearningOpenGL\Debug\glew_static.pdb'; linking object as if no debug info
   LearningOpenGL.vcxproj -> C:\Users\Carwyn\documents\visual studio 2017\Projects\LearningOpenGL\Debug\LearningOpenGL.exe
   LearningOpenGL.vcxproj -> C:\Users\Carwyn\documents\visual studio 2017\Projects\LearningOpenGL\Debug\LearningOpenGL.pdb (Partial PDB)

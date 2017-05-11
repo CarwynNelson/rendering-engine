@@ -26,11 +26,6 @@ public:
 		glfwTerminate();
 	}
 
-	GLFWwindow* getWindow()
-	{
-		return window;
-	}
-
 	void update()
 	{
 		glfwSwapBuffers(window);
