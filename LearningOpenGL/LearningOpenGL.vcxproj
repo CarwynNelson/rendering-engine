@@ -121,6 +121,7 @@
     <ClCompile Include="RenderEngine\Private\Loader.cpp" />
     <ClCompile Include="RenderEngine\Private\Display.cpp" />
     <ClCompile Include="RenderEngine\Private\Renderer.cpp" />
+    <ClCompile Include="Windows\Private\Application.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RenderEngine\Public\Exceptions\WindowNotLoadedException.h" />
@@ -128,6 +129,7 @@
     <ClInclude Include="RenderEngine\Public\Loader.h" />
     <ClInclude Include="RenderEngine\Public\Model.h" />
     <ClInclude Include="RenderEngine\Public\Renderer.h" />
+    <ClInclude Include="Windows\Public\Application.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
