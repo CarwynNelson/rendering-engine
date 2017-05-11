@@ -124,6 +124,7 @@
     <ClInclude Include="RenderEngine\Public\Display.h" />
     <ClInclude Include="RenderEngine\Public\Loader.h" />
     <ClInclude Include="RenderEngine\Public\Model.h" />
+    <ClInclude Include="RenderEngine\Public\Renderer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

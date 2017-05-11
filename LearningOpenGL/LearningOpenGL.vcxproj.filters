@@ -32,5 +32,8 @@
     <ClInclude Include="RenderEngine\Public\Loader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RenderEngine\Public\Renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
