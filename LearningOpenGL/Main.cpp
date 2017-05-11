@@ -10,7 +10,16 @@ int main()
 {
 	try
 	{
-		
+
+		std::vector<GLfloat> vertices = {
+			-0.5f,  0.5f, 0.0f,
+			-0.5f, -0.5f, 0.0f,
+			0.5f, -0.5f, 0.0f,
+
+			0.5f, -0.5f, 0.0f,
+			0.5f,  0.5f, 0.0f,
+			-0.5f,  0.5f, 0.0f
+		};
 
 		auto exitCallback = [](GLFWwindow* window, int key, int scancode, int action, int mode) {
 			if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE)
@@ -25,10 +34,13 @@ int main()
 		glfwSetKeyCallback(display.getWindow(), exitCallback);
 
 		Loader loader;
-		auto model = loader.loadData();
+		auto model = loader.loadData(vertices);
 
 		while (!display.closing())
 		{
+			glClearColor(0.1f, 0.2f, 0.3f, 1.0);
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 			glEnableVertexAttribArray(0);
 			glBindBuffer(GL_ARRAY_BUFFER, model.getVbo());
 			glVertexAttribPointer(
@@ -40,7 +52,8 @@ int main()
 				(GLvoid*)0
 			);
 			
-			glDrawArrays(GL_TRIANGLES, 0, 3);
+			glDrawArrays(GL_TRIANGLES, 0, vertices.size());
+			
 			glDisableVertexAttribArray(0);
 
 			display.update();
@@ -51,6 +64,6 @@ int main()
 		std::cerr << e.what() << '\n';
 		return -1;
 	}
-	
+
 	return 0;
 }

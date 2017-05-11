@@ -6,15 +6,8 @@
 class Loader
 {
 public:
-	Model loadData()
+	Model loadData(std::vector<GLfloat> vertices)
 	{
-		// An array of 3 vectors which represents 3 vertices
-		GLfloat vertices[] = {
-			-1.0f, -1.0f, 0.0f,
-			1.0f, -1.0f, 0.0f,
-			0.0f,  1.0f, 0.0f,
-		};
-
 		GLuint vaoId;
 		glGenVertexArrays(1, &vaoId);
 		glBindVertexArray(vaoId);
@@ -23,7 +16,15 @@ public:
 		glGenBuffers(1, &vbo);
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
 
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+		auto size = vertices.size() * sizeof(GLfloat);
+		auto data = vertices.data();
+
+		glBufferData(
+			GL_ARRAY_BUFFER,
+			size,
+			data,
+			GL_STATIC_DRAW
+		);
 
 		return Model(vbo);
 	}

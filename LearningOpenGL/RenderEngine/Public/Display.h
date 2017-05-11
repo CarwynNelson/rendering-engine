@@ -33,8 +33,8 @@ public:
 
 	void update()
 	{
-		glfwPollEvents();
 		glfwSwapBuffers(window);
+		glfwPollEvents();
 	}
 
 	bool closing()
@@ -67,6 +67,7 @@ private:
 
 		glfwGetFramebufferSize(window, &width, &height);
 		glViewport(0, 0, width, height);
+		glfwSwapInterval(1); // enable vsync
 	}
 
 	void setWindowHints()
