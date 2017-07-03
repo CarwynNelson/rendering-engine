@@ -1,5 +1,4 @@
 #include "../Public/Application.h"
-#include "../Public/StaticShader.h"
 
 void Application::run()
 {
