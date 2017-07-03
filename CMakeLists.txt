@@ -24,7 +24,6 @@ set(SOURCE_FILES
         RenderEngine/Private/Application.cpp
         RenderEngine/Private/Display.cpp
         RenderEngine/Private/Filesystem.cpp
-        RenderEngine/Private/Loader.cpp
         RenderEngine/Private/Renderer.cpp
         RenderEngine/Public/Exceptions/WindowNotLoadedException.h
         RenderEngine/Public/Application.h
@@ -33,7 +32,7 @@ set(SOURCE_FILES
         RenderEngine/Public/Loader.h
         RenderEngine/Public/Model.h
         RenderEngine/Public/Renderer.h
-        Main.cpp RenderEngine/Public/Shader.h)
+        Main.cpp RenderEngine/Public/Shader.h RenderEngine/Public/Loader.h)
 
 add_executable(rendering_engine ${SOURCE_FILES})
 
