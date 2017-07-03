@@ -33,7 +33,7 @@ set(SOURCE_FILES
         RenderEngine/Public/Loader.h
         RenderEngine/Public/Model.h
         RenderEngine/Public/Renderer.h
-        Main.cpp)
+        Main.cpp RenderEngine/Public/Shader.h)
 
 add_executable(rendering_engine ${SOURCE_FILES})
 

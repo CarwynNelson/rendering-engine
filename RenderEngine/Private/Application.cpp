@@ -10,8 +10,6 @@ void Application::run()
 			"{\n"
 			"    gl_Position = vec4(aPos, 1.0);\n"
 			"}";
-	const char* vertexShaderSourcePtr = vertexShaderSource.c_str();
-
 	std::string fragmentShaderSource = "#version 330 core\n"
 			"\n"
 			"out vec4 FragColor;\n"
@@ -20,43 +18,21 @@ void Application::run()
 			"{\n"
 			"    FragColor = vec4(1.0f, 0.5f, 02.f, 1.0f);\n"
 			"}";
-	const char* fragmentShaderSourcePtr = fragmentShaderSource.c_str();
 
 	try
 	{
 		Display display(800, 600, "Learning OpenGL");
 		Renderer renderer;
 
-		// build and compile our shader program
-		// ------------------------------------
-		// vertex shader
-		int vertexShader = glCreateShader(GL_VERTEX_SHADER);
-		glShaderSource(vertexShader, 1, &vertexShaderSourcePtr, NULL);
-		glCompileShader(vertexShader);
-		// check for shader compile errors
-		int success;
-		char infoLog[512];
-		glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
-		if (!success)
-		{
-			glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-			std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
-		}
-		// fragment shader
-		int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-		glShaderSource(fragmentShader, 1, &fragmentShaderSourcePtr, NULL);
-		glCompileShader(fragmentShader);
-		// check for shader compile errors
-		glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
-		if (!success)
-		{
-			glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
-			std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << infoLog << std::endl;
-		}
+        Shader shader(vertexShaderSource, fragmentShaderSource);
+
+        int success;
+        char infoLog[512];
+
 		// link shaders
 		int shaderProgram = glCreateProgram();
-		glAttachShader(shaderProgram, vertexShader);
-		glAttachShader(shaderProgram, fragmentShader);
+		glAttachShader(shaderProgram, shader.getVertexShader());
+		glAttachShader(shaderProgram, shader.getFragmentShader());
 		glLinkProgram(shaderProgram);
 		// check for linking errors
 		glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
@@ -64,8 +40,8 @@ void Application::run()
 			glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
 			std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
 		}
-		glDeleteShader(vertexShader);
-		glDeleteShader(fragmentShader);
+		glDeleteShader(shader.getVertexShader());
+		glDeleteShader(shader.getFragmentShader());
 
 		// set up vertex data (and buffer(s)) and configure vertex attributes
 		// ------------------------------------------------------------------

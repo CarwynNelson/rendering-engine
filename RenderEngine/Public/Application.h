@@ -5,10 +5,11 @@
 #include <string>
 
 // Game Libs
-#include "../Public/Display.h"
-#include "../Public/Model.h"
-#include "../Public/Loader.h"
-#include "../Public/Renderer.h"
+#include "Display.h"
+#include "Model.h"
+#include "Loader.h"
+#include "Renderer.h"
+#include "Shader.h"
 
 class Application
 {
