@@ -5,23 +5,33 @@
 class Shader
 {
 private:
-    int vertexShader, fragmentShader;
+    unsigned int vertexShader, fragmentShader, shaderProgram;
+
 public:
     Shader(const std::string vertexSource, const std::string fragmentSource)
     {
         vertexShader = compileShader(vertexSource, GL_VERTEX_SHADER);
         fragmentShader = compileShader(fragmentSource, GL_FRAGMENT_SHADER);
+
+        shaderProgram = glCreateProgram();
+        linkShadersToProgram();
     }
 
-    int getVertexShader()
+    unsigned int getVertexShader()
     {
         return vertexShader;
     }
 
-    int getFragmentShader()
+    unsigned int getFragmentShader()
     {
         return fragmentShader;
     }
+
+    unsigned int getProgram()
+    {
+        return shaderProgram;
+    }
+
 private:
     int compileShader(std::string shaderSource, GLenum shaderType)
     {
@@ -47,5 +57,30 @@ private:
             glGetShaderInfoLog(shaderId, 512, nullptr, infoLog);
             std::cout << "ERROR::SHADER::COMPILATION_FAILED\n" << infoLog << std::endl;
         }
+    }
+
+    void checkLinkStatus()
+    {
+        int success;
+        char infoLog[512];
+
+        glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
+        if (!success)
+        {
+            glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
+            std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
+        }
+    }
+
+    void linkShadersToProgram()
+    {
+        glAttachShader(shaderProgram, vertexShader);
+        glAttachShader(shaderProgram, fragmentShader);
+        glLinkProgram(shaderProgram);
+
+        checkLinkStatus();
+
+        glDeleteShader(vertexShader);
+        glDeleteShader(fragmentShader);
     }
 };

@@ -26,23 +26,6 @@ void Application::run()
 
         Shader shader(vertexShaderSource, fragmentShaderSource);
 
-        int success;
-        char infoLog[512];
-
-		// link shaders
-		int shaderProgram = glCreateProgram();
-		glAttachShader(shaderProgram, shader.getVertexShader());
-		glAttachShader(shaderProgram, shader.getFragmentShader());
-		glLinkProgram(shaderProgram);
-		// check for linking errors
-		glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
-		if (!success) {
-			glGetProgramInfoLog(shaderProgram, 512, NULL, infoLog);
-			std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
-		}
-		glDeleteShader(shader.getVertexShader());
-		glDeleteShader(shader.getFragmentShader());
-
 		// set up vertex data (and buffer(s)) and configure vertex attributes
 		// ------------------------------------------------------------------
 		float vertices[] = {
@@ -82,7 +65,7 @@ void Application::run()
 		{
 			renderer.prepare();
 
-			glUseProgram(shaderProgram);
+			glUseProgram(shader.getProgram());
 			glBindVertexArray(vao);
 			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 			glBindVertexArray(0);
